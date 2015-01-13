@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">PizzaMaker</string>
+    <string name="title">Welcome to PizzaMaker 4000!</string>
+    <string name="action_settings">Settings</string>
+    <string name="make_pizza">Make Pizza</string>
+    <string name="cheese_placeholder">Cheese</string>
+    <string name="pineapple_placeholder">Pineapple</string>
+    <string name="chicken_placeholder">Chicken</string>
+    <string name="mushroom_placeholder">Mushroom</string>
+    <string name="pork_placeholder">Pork</string>
+    <string name="chilli_placeholder">Chilli</string>
+    <string name="name_placeholder">Pizza Name</string>
+
+    <string-array name="cheese_type">
+        <item>Mozzarella</item>
+        <item>Parmesan</item>
+        <item>Blue Cheese</item>
+    </string-array>
+
+    <string-array name="chilli_type">
+        <item>Campsicum</item>
+        <item>Cili padi</item>
+    </string-array>
+
+    <string-array name="chicken_type">
+        <item>BBQ</item>
+        <item>Masala</item>
+        <item>Spicy</item>
+    </string-array>
+
+    <string-array name="mushroom_type">
+        <item>Butter</item>
+        <item>Shiitake</item>
+        <item>Button</item>
+    </string-array>
+
+    <string-array name="pineapple_type">
+        <item>Sarawak</item>
+        <item>Peninsula</item>
+        <item>Imported</item>
+    </string-array>
+
+    <string-array name="pork_type">
+        <item>BBQ</item>
+        <item>Bacon</item>
+    </string-array>
+
+</resources>
