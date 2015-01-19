@@ -11,6 +11,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
+import java.util.HashMap;
+import java.util.List;
+
 
 public class MainActivity extends ActionBarActivity {
 
@@ -30,21 +33,6 @@ public class MainActivity extends ActionBarActivity {
     private EditText mEdit_pineapple;
     private EditText mEdit_pork;
     private EditText mEdit_name;
-
-    private String pizza_name;
-    private String pizza_cheese;
-    private String pizza_chilli;
-    private String pizza_chicken;
-    private String pizza_mushroom;
-    private String pizza_pineapple;
-    private String pizza_pork;
-
-    ArrayAdapter<CharSequence> mCheeseAdapter;
-    ArrayAdapter<CharSequence> mPorkAdapter;
-    ArrayAdapter<CharSequence> mChilliAdapter;
-    ArrayAdapter<CharSequence> mMushroomAdapter;
-    ArrayAdapter<CharSequence> mChickenAdapter;
-    ArrayAdapter<CharSequence> mPineappleAdapter;
 
     private Button mButton_makePizza;
 
@@ -76,8 +64,6 @@ public class MainActivity extends ActionBarActivity {
 
         mButton_makePizza = (Button) findViewById(R.id.make_pizza);
 
-        String spinners[] = {"cheese_spinner", "chicken_spinner", "chilli_spinner", ""};
-
         mCheeseSpinner.setAdapter(ArrayAdapter.createFromResource(this, R.array.cheese_type, R.layout.support_simple_spinner_dropdown_item));
         mChickenSpinner.setAdapter(ArrayAdapter.createFromResource(this, R.array.chicken_type, R.layout.support_simple_spinner_dropdown_item));
         mChilliSpinner.setAdapter(ArrayAdapter.createFromResource(this, R.array.chilli_type, R.layout.support_simple_spinner_dropdown_item));
@@ -89,22 +75,13 @@ public class MainActivity extends ActionBarActivity {
             @Override
             public void onClick(View v) {
 
-                pizza_name = mEdit_name.getText().toString();
-
-                pizza_cheese = mCheeseSpinner.getSelectedItem().toString().toUpperCase().replace(" ", "_");
-                pizza_chilli = mChilliSpinner.getSelectedItem().toString().toUpperCase().replace(" ", "_");
-                pizza_chicken = mChickenSpinner.getSelectedItem().toString().toUpperCase().replace(" ", "_");
-                pizza_mushroom = mMushroomSpinner.getSelectedItem().toString().toUpperCase().replace(" ", "_");
-                pizza_pineapple = mPineappleSpinner.getSelectedItem().toString().toUpperCase().replace(" ", "_");
-                pizza_pork = mPorkSpinner.getSelectedItem().toString().toUpperCase().replace(" ", "_");
-
-                intent.putExtra(PIZZA_NAME, pizza_name);
-                intent.putExtra(PIZZA_CHEESE, pizza_cheese);
-                intent.putExtra(PIZZA_CHILLI, pizza_chilli);
-                intent.putExtra(PIZZA_CHICKEN, pizza_chicken);
-                intent.putExtra(PIZZA_MUSHROOM, pizza_mushroom);
-                intent.putExtra(PIZZA_PINEAPPLE, pizza_pineapple);
-                intent.putExtra(PIZZA_PORK, pizza_pork);
+                intent.putExtra(PIZZA_NAME, mEdit_name.getText().toString());
+                intent.putExtra(PIZZA_CHEESE, mCheeseSpinner.getSelectedItem().toString().toUpperCase().replace(" ", "_"));
+                intent.putExtra(PIZZA_CHILLI, mChilliSpinner.getSelectedItem().toString().toUpperCase().replace(" ", "_"));
+                intent.putExtra(PIZZA_CHICKEN, mChickenSpinner.getSelectedItem().toString().toUpperCase().replace(" ", "_"));
+                intent.putExtra(PIZZA_MUSHROOM, mMushroomSpinner.getSelectedItem().toString().toUpperCase().replace(" ", "_"));
+                intent.putExtra(PIZZA_PINEAPPLE, mPineappleSpinner.getSelectedItem().toString().toUpperCase().replace(" ", "_"));
+                intent.putExtra(PIZZA_PORK, mPorkSpinner.getSelectedItem().toString().toUpperCase().replace(" ", "_"));
                 startActivity(intent);
 
             }
