@@ -11,10 +11,6 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.ResourceBundle;
-
 
 public class MainActivity extends ActionBarActivity {
 
@@ -69,6 +65,10 @@ public class MainActivity extends ActionBarActivity {
                 ArrayAdapter.createFromResource(this, R.array.pork_type, R.layout.support_simple_spinner_dropdown_item)
         };
 
+        final String foodStuff[] = {
+               PIZZA_CHEESE, PIZZA_CHICKEN, PIZZA_CHILLI, PIZZA_MUSHROOM, PIZZA_PINEAPPLE, PIZZA_PORK
+        };
+
         mButton_makePizza = (Button) findViewById(R.id.make_pizza);
 
         for(int x=0; x<spinner.length; x++){
@@ -80,7 +80,7 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
                 intent.putExtra(PIZZA_NAME, mEdit_name.getText().toString());
                 for(int x=0; x<spinner.length; x++){
-                    intent.putExtra(PIZZA_CHEESE, spinner[x].getSelectedItem().toString().toUpperCase().replace(" ", "_"));
+                    intent.putExtra(foodStuff[x], spinner[x].getSelectedItem().toString().toUpperCase().replace(" ", "_"));
                 }
                 startActivity(intent);
 
