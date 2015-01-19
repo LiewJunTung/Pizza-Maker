@@ -76,19 +76,14 @@ public class MainActivity extends ActionBarActivity {
 
         mButton_makePizza = (Button) findViewById(R.id.make_pizza);
 
-        mCheeseAdapter = ArrayAdapter.createFromResource(this, R.array.cheese_type, R.layout.support_simple_spinner_dropdown_item);
-        mChickenAdapter = ArrayAdapter.createFromResource(this, R.array.chicken_type, R.layout.support_simple_spinner_dropdown_item);
-        mChilliAdapter = ArrayAdapter.createFromResource(this, R.array.chilli_type, R.layout.support_simple_spinner_dropdown_item);
-        mMushroomAdapter = ArrayAdapter.createFromResource(this, R.array.mushroom_type, R.layout.support_simple_spinner_dropdown_item);
-        mPineappleAdapter = ArrayAdapter.createFromResource(this, R.array.pineapple_type, R.layout.support_simple_spinner_dropdown_item);
-        mPorkAdapter = ArrayAdapter.createFromResource(this, R.array.pork_type, R.layout.support_simple_spinner_dropdown_item);
+        String spinners[] = {"cheese_spinner", "chicken_spinner", "chilli_spinner", ""};
 
-        mCheeseSpinner.setAdapter(mCheeseAdapter);
-        mChickenSpinner.setAdapter(mChickenAdapter);
-        mChilliSpinner.setAdapter(mChilliAdapter);
-        mMushroomSpinner.setAdapter(mMushroomAdapter);
-        mPineappleSpinner.setAdapter(mPineappleAdapter);
-        mPorkSpinner.setAdapter(mPorkAdapter);
+        mCheeseSpinner.setAdapter(ArrayAdapter.createFromResource(this, R.array.cheese_type, R.layout.support_simple_spinner_dropdown_item));
+        mChickenSpinner.setAdapter(ArrayAdapter.createFromResource(this, R.array.chicken_type, R.layout.support_simple_spinner_dropdown_item));
+        mChilliSpinner.setAdapter(ArrayAdapter.createFromResource(this, R.array.chilli_type, R.layout.support_simple_spinner_dropdown_item));
+        mMushroomSpinner.setAdapter(ArrayAdapter.createFromResource(this, R.array.mushroom_type, R.layout.support_simple_spinner_dropdown_item));
+        mPineappleSpinner.setAdapter(ArrayAdapter.createFromResource(this, R.array.pineapple_type, R.layout.support_simple_spinner_dropdown_item));
+        mPorkSpinner.setAdapter(ArrayAdapter.createFromResource(this, R.array.pork_type, R.layout.support_simple_spinner_dropdown_item));
 
         mButton_makePizza.setOnClickListener(new View.OnClickListener() {
             @Override
