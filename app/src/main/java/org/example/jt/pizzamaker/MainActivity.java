@@ -13,6 +13,7 @@ import android.widget.Spinner;
 
 import java.util.HashMap;
 import java.util.List;
+import java.util.ResourceBundle;
 
 
 public class MainActivity extends ActionBarActivity {
@@ -49,7 +50,7 @@ public class MainActivity extends ActionBarActivity {
 
         mEdit_name = (EditText) findViewById(R.id.name_edit);
 
-        Spinner spinner[] = {
+        final Spinner spinner[] = {
                 (Spinner) findViewById(R.id.cheese_spinner),
                 (Spinner) findViewById(R.id.chicken_spinner),
                 (Spinner) findViewById(R.id.chilli_spinner),
@@ -59,33 +60,28 @@ public class MainActivity extends ActionBarActivity {
         };
 
 
-        mCheeseSpinner = spinner[0];
-        mChickenSpinner = spinner[1];
-        mChilliSpinner = spinner[2];
-        mMushroomSpinner = spinner[3];
-        mPineappleSpinner = spinner[4];
-        mPorkSpinner = spinner[5];
+        ArrayAdapter arrayAdapter[] = {
+                ArrayAdapter.createFromResource(this, R.array.cheese_type, R.layout.support_simple_spinner_dropdown_item),
+                ArrayAdapter.createFromResource(this, R.array.chicken_type, R.layout.support_simple_spinner_dropdown_item),
+                ArrayAdapter.createFromResource(this, R.array.chilli_type, R.layout.support_simple_spinner_dropdown_item),
+                ArrayAdapter.createFromResource(this, R.array.mushroom_type, R.layout.support_simple_spinner_dropdown_item),
+                ArrayAdapter.createFromResource(this, R.array.pineapple_type, R.layout.support_simple_spinner_dropdown_item),
+                ArrayAdapter.createFromResource(this, R.array.pork_type, R.layout.support_simple_spinner_dropdown_item)
+        };
 
         mButton_makePizza = (Button) findViewById(R.id.make_pizza);
 
-        mCheeseSpinner.setAdapter(ArrayAdapter.createFromResource(this, R.array.cheese_type, R.layout.support_simple_spinner_dropdown_item));
-        mChickenSpinner.setAdapter(ArrayAdapter.createFromResource(this, R.array.chicken_type, R.layout.support_simple_spinner_dropdown_item));
-        mChilliSpinner.setAdapter(ArrayAdapter.createFromResource(this, R.array.chilli_type, R.layout.support_simple_spinner_dropdown_item));
-        mMushroomSpinner.setAdapter(ArrayAdapter.createFromResource(this, R.array.mushroom_type, R.layout.support_simple_spinner_dropdown_item));
-        mPineappleSpinner.setAdapter(ArrayAdapter.createFromResource(this, R.array.pineapple_type, R.layout.support_simple_spinner_dropdown_item));
-        mPorkSpinner.setAdapter(ArrayAdapter.createFromResource(this, R.array.pork_type, R.layout.support_simple_spinner_dropdown_item));
+        for(int x=0; x<spinner.length; x++){
+            spinner[x].setAdapter(arrayAdapter[x]);
+        }
 
         mButton_makePizza.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 intent.putExtra(PIZZA_NAME, mEdit_name.getText().toString());
-                intent.putExtra(PIZZA_CHEESE, mCheeseSpinner.getSelectedItem().toString().toUpperCase().replace(" ", "_"));
-                intent.putExtra(PIZZA_CHILLI, mChilliSpinner.getSelectedItem().toString().toUpperCase().replace(" ", "_"));
-                intent.putExtra(PIZZA_CHICKEN, mChickenSpinner.getSelectedItem().toString().toUpperCase().replace(" ", "_"));
-                intent.putExtra(PIZZA_MUSHROOM, mMushroomSpinner.getSelectedItem().toString().toUpperCase().replace(" ", "_"));
-                intent.putExtra(PIZZA_PINEAPPLE, mPineappleSpinner.getSelectedItem().toString().toUpperCase().replace(" ", "_"));
-                intent.putExtra(PIZZA_PORK, mPorkSpinner.getSelectedItem().toString().toUpperCase().replace(" ", "_"));
+                for(int x=0; x<spinner.length; x++){
+                    intent.putExtra(PIZZA_CHEESE, spinner[x].getSelectedItem().toString().toUpperCase().replace(" ", "_"));
+                }
                 startActivity(intent);
 
             }
