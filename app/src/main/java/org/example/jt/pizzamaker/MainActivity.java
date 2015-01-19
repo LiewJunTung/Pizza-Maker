@@ -26,12 +26,6 @@ public class MainActivity extends ActionBarActivity {
     public final static String PIZZA_PORK = "pizza_pork";
     public final static String PIZZA_PINEAPPLE = "pizza_pineapple";
 
-    private EditText mEdit_cheese;
-    private EditText mEdit_chilli;
-    private EditText mEdit_chicken;
-    private EditText mEdit_mushroom;
-    private EditText mEdit_pineapple;
-    private EditText mEdit_pork;
     private EditText mEdit_name;
 
     private Button mButton_makePizza;
@@ -55,12 +49,22 @@ public class MainActivity extends ActionBarActivity {
 
         mEdit_name = (EditText) findViewById(R.id.name_edit);
 
-        mCheeseSpinner = (Spinner) findViewById(R.id.cheese_spinner);
-        mChickenSpinner = (Spinner) findViewById(R.id.chicken_spinner);
-        mChilliSpinner = (Spinner) findViewById(R.id.chilli_spinner);
-        mMushroomSpinner = (Spinner) findViewById(R.id.mushroom_spinner);
-        mPineappleSpinner = (Spinner) findViewById(R.id.pineapple_spinner);
-        mPorkSpinner = (Spinner) findViewById(R.id.pork_spinner);
+        Spinner spinner[] = {
+                (Spinner) findViewById(R.id.cheese_spinner),
+                (Spinner) findViewById(R.id.chicken_spinner),
+                (Spinner) findViewById(R.id.chilli_spinner),
+                (Spinner) findViewById(R.id.mushroom_spinner),
+                (Spinner) findViewById(R.id.pineapple_spinner),
+                (Spinner) findViewById(R.id.pork_spinner)
+        };
+
+
+        mCheeseSpinner = spinner[0];
+        mChickenSpinner = spinner[1];
+        mChilliSpinner = spinner[2];
+        mMushroomSpinner = spinner[3];
+        mPineappleSpinner = spinner[4];
+        mPorkSpinner = spinner[5];
 
         mButton_makePizza = (Button) findViewById(R.id.make_pizza);
 
