@@ -4,15 +4,18 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.TextView;
+import android.view.ViewGroup;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 /**
  * Created by jt on 1/13/15.
  */
 public class SecondActivity extends ActionBarActivity {
-    private TextView mPizzaDescription;
+    private ListView mPizzaDescription;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,7 +24,7 @@ public class SecondActivity extends ActionBarActivity {
 
         Intent intent = getIntent();
 
-        mPizzaDescription = (TextView) findViewById(R.id.pizza_description);
+        mPizzaDescription = (ListView) findViewById(R.id.pizza_description);
 
         String pizza_name = intent.getStringExtra(MainActivity.PIZZA_NAME);
         Cheese pizza_cheese = Cheese.valueOf(intent.getStringExtra(MainActivity.PIZZA_CHEESE));
@@ -45,7 +48,11 @@ public class SecondActivity extends ActionBarActivity {
 
         setTitle(pizza.getName());
 
-        mPizzaDescription.setText(pizza.toString());
+        LayoutInflater inflater = getLayoutInflater();
+        ViewGroup header = (ViewGroup) inflater.inflate(R.layout.header, mPizzaDescription, false);
+
+        mPizzaDescription.addHeaderView(header, null, false);
+        mPizzaDescription.setAdapter(new ArrayAdapter<String>(getBaseContext(), R.layout.list_item, pizza.getIngredientsList()));
     }
 
     @Override

@@ -1,17 +1,21 @@
 package org.example.jt.pizzamaker;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by jt on 1/13/15.
  */
 public class Pizza {
     private final String LOG_TAG = "PIZZA";
-    private final String name;
-    private final Cheese cheese;
-    private final Pork pork;
-    private final Pineapple pineapple;
-    private final Mushroom mushroom;
-    private final Chicken chicken;
-    private final Chilli chilli;
+    private String name;
+    private Cheese cheese;
+    private Pork pork;
+    private Pineapple pineapple;
+    private Mushroom mushroom;
+    private Chicken chicken;
+    private Chilli chilli;
+    private List<String> ingredientsList;
 
     public String getName() {
         return name;
@@ -42,6 +46,7 @@ public class Pizza {
     }
 
     public Pizza(PizzaMaker pizzaMaker) {
+        this.ingredientsList = new ArrayList<>();
         this.name = pizzaMaker.name;
         this.cheese = pizzaMaker.cheese;
         this.chicken = pizzaMaker.chicken;
@@ -49,7 +54,7 @@ public class Pizza {
         this.pineapple = pizzaMaker.pineapple;
         this.mushroom = pizzaMaker.mushroom;
         this.chilli = pizzaMaker.chilli;
-
+        setIngredientsList();
     }
 
     @Override
@@ -60,6 +65,19 @@ public class Pizza {
                "Mushroom=" + mushroom + '\n' +
                "Chicken=" + chicken + '\n' +
                "Chilli=" + chilli ;
+    }
+
+    public void setIngredientsList(){
+        ingredientsList.add("Cheese = " + cheese.toString());
+        ingredientsList.add("Chicken = " + chicken.toString());
+        ingredientsList.add("Pork = " + pork.toString());
+        ingredientsList.add("Pineapple = " + pineapple.toString());
+        ingredientsList.add("Mushroom = " + mushroom.toString());
+        ingredientsList.add("Chilli = " + chilli.toString());
+    }
+
+    public List<String> getIngredientsList(){
+        return ingredientsList;
     }
 
     public static class PizzaMaker{
