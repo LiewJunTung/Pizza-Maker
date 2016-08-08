@@ -77,7 +77,7 @@ public class Pizza {
 
         private String setName(String name){
 
-            if(name.equals("")){
+            if(name == null || name.trim().isEmpty()){
                 return "Pizza with No Name";
             }
             else{
